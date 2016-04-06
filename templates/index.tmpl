@@ -1,0 +1,68 @@
+{#  -*- coding: utf-8 -*- #}
+{% import 'comments_helper.tmpl' as comments with context %}
+{% import 'index_helper.tmpl' as helper with context %}
+{% import 'post_header.tmpl' as pheader with context %}
+{% extends 'base.tmpl' %}
+
+{% block extra_head %}
+  {{ super() }}
+  {% if posts and (permalink == '/' or permalink == '/' + index_file) %}
+    <link rel="prefetch" href="{{ posts[0].permalink() }}" type="text/html">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+{% block content_header %}{% endblock %}
+{% if 'main_index' in pagekind %}
+  {{ front_index_header }}
+{% endif %}
+<div class="postindex">
+{% for post in posts %}
+  <article class="h-entry post-{{ post.meta('type') }}">
+    <div class="row">
+      <div class="article-title col-md-12">
+        {{ pheader.html_post_header(post) }}
+      </div> <!-- end col-md-12 -->
+    </div> <!-- end row -->
+
+    <div class="row">
+      <div class="metadata col-md-3">
+        <p class="byline author vcard"><span class="byline-name fn">
+          {% if author_pages_generated %}
+          <a href="{{ _link('author', post.author()) }}">{{ post.author()|e }}</a>
+          {% else %}
+          {{ post.author()|e }}
+          {% endif %}
+        </span></p>
+
+        <p class="dateline"><a href="{{ post.permalink() }}"
+          rel="bookmark"><i class="fa fa-link"></i></a>
+          <time class="published dt-published"
+          datetime="{{ post.formatted_date('webiso') }}"
+          title="{{ post.formatted_date(date_format)|e }}"
+          >{{ post.formatted_date(date_format)|e }}</time></p>
+
+        {% if not post.meta('nocomments') and site_has_comments %}
+        <p class="commentline">{{ comments.comment_link(post.permalink(), post._base_path) }}</p>
+        {% endif %}
+      </div> <!-- end metadata col-md-3 -->
+
+      <div class="article-content col-md-7">
+        {% if index_teasers %}
+        <div class="p-summary entry-summary">
+        {{ post.text(teaser_only=True) }}
+        {% else %}
+        <div class="e-content entry-content">
+        {{ post.text(teaser_only=False) }}
+        {% endif %}
+        </div>
+      </div> <!-- end col-md-7 -->
+    </div> <!-- end row -->
+  </article>
+{% endfor %}
+</div>
+
+{{ helper.html_pager() }}
+{{ comments.comment_link_script() }}
+{{ helper.mathjax_script(posts) }}
+{% endblock %}
