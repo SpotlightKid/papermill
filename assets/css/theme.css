@@ -122,7 +122,7 @@ h4,
 h5,
 h6 {
     color: #000001;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 tt {
@@ -160,12 +160,13 @@ tt {
 #blog-desc {
     font-size: 20px;
     line-height: 1.6em;
+    margin-bottom: 0px;
 }
 
 /* Styling for articles */
 
 article header {
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 article a:hover {
