@@ -46,6 +46,10 @@
 }
 */
 
+.nav-pills > li > a {
+    padding: 8px 8px;
+}
+
 nav .nav-pills > .active > a,
 nav .nav-pills > .active > a:hover {
     color: #0A5693;
