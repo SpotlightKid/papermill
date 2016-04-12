@@ -125,6 +125,23 @@ h6 {
     margin-bottom: 0px;
 }
 
+tt {
+    font-size: 16px;
+}
+
+p tt {
+    background-color: #eee;
+}
+
+pre {
+    font-size: 14px;
+}
+
+pre,
+tt {
+    font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+}
+
 .table th,
 .table td {
     line-height: 1.3em
@@ -166,6 +183,13 @@ article .entry-title a {
 
 article .entry-title a:hover {
     color: #005580;
+}
+
+/* Images */
+
+.alignright {
+    float: left;
+    margin-right: 0.5em;
 }
 
 /* Metadata */
