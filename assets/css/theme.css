@@ -211,6 +211,20 @@ article .entry-title a:hover {
     margin-right: 0.5em;
 }
 
+.roundimage {
+    border-radius: 20px;
+}
+
+img.align-left {
+    float: left;
+    margin-right: 15px;
+}
+
+img.align-right {
+    float: right;
+    margin-left: 15px;
+}
+
 /* Metadata */
 
 .postlist .listdate {
