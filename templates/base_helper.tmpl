@@ -71,10 +71,15 @@ lang="{{ lang }}">
 {% macro late_load_js() %}
   {{ social_buttons_code }}
 
-  {#
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/bootstrap.min.js"></script>
-  #}
+  <script src="/assets/js/jquery.colorbox-min.js"></script>
+  <script src="/assets/js/jquery.colorbox-de.js"></script>
+  <script>
+    $(document).ready(function () {
+        $('a.image-reference').colorbox({rel:'gallery', maxWidth:'90%', maxHeight:'90%', scalePhotos:true});
+    });
+  </script>
 {% endmacro %}
 
 {% macro html_stylesheets() %}
@@ -91,6 +96,7 @@ lang="{{ lang }}">
   <link href="/assets/css/theme.css" rel="stylesheet" type="text/css">
   <link href="/assets/css/utils.css" rel="stylesheet" type="text/css">
   <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/colorbox.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC" rel="stylesheet" type="text/css">
   {% if has_custom_css %}
   <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">
